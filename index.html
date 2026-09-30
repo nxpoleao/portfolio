@@ -2,53 +2,92 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enzo Napoleão — Software Developer</title>
-  <meta name="description" content="Portfólio de Enzo Napoleão, desenvolvedor em formação com foco em Fullstack Python. Projetos, trajetória e formas de contato.">
-  <meta name="theme-color" content="#0a0a0b">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Enzo Napoleão — Software Engineer</title>
+  <meta name="description" content="Enzo Napoleão, Software Engineer com foco em back-end com Python. Desenvolvo sistemas, automações de processos e integrações. Veja projetos, trajetória e stack.">
+  <meta name="author" content="Enzo Napoleão">
+  <link rel="canonical" href="https://naapoleaodev.vercel.app/">
+  <meta name="theme-color" content="#0b0d11">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Enzo Napoleão — Software Developer">
-  <meta property="og:description" content="Desenvolvedor em formação, construindo carreira em Fullstack Python. Confira projetos e trajetória.">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="napoleao.dev">
+  <meta property="og:url" content="https://naapoleaodev.vercel.app/">
+  <meta property="og:title" content="Enzo Napoleão — Software Engineer">
+  <meta property="og:description" content="Back-end com Python: sistemas, automação de processos e integrações.">
+  <meta property="og:image" content="https://naapoleaodev.vercel.app/assets/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Enzo Napoleão — Software Engineer. Back-end, Python, sistemas e automação.">
+  <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%23f5a623%22>&gt;</text></svg>">
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/icons/favicon-48.png">
+  <link rel="icon" type="image/png" sizes="256x256" href="assets/icons/favicon.png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Tema aplicado antes da pintura, para não piscar -->
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      try { if (localStorage.getItem('napoleao-dev-theme') === 'light') d.setAttribute('data-theme', 'light'); } catch (e) {}
+    })();
+  </script>
 
   <link rel="stylesheet" href="css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Enzo Napoleão",
+    "jobTitle": "Software Engineer",
+    "url": "https://naapoleaodev.vercel.app/",
+    "knowsAbout": ["Python", "Flask", "FastAPI", "SQL", "PostgreSQL", "REST APIs", "Automação de processos"],
+    "sameAs": [
+      "https://github.com/nxpoleao",
+      "https://www.linkedin.com/in/enzonapole%C3%A3o/",
+      "https://instagram.com/naapoleao.dev"
+    ]
+  }
+  </script>
 </head>
 <body>
 
   <a class="skip-link" href="#main">Pular para o conteúdo</a>
 
-  <!-- ===== NAV ===== -->
+  <!-- ===== HEADER ===== -->
   <header class="site-header" id="site-header">
-    <div class="header-inner">
-      <a href="#top" class="logo" aria-label="Napoleão.dev — início">
-        <span class="logo-prompt">~/</span>napoleao<span class="cursor-accent">.dev</span>
+    <div class="container header-inner">
+      <a href="#top" class="brand" aria-label="napoleao.dev — voltar ao início">
+        <img class="brand-mark" src="assets/icons/logo-mark-sm.png" alt="" width="45" height="28">
+        <span class="brand-word">napoleao<span class="accent">.dev</span></span>
+        <span class="brand-path" id="brand-path" aria-hidden="true">~/</span>
       </a>
 
       <nav class="main-nav" id="main-nav" aria-label="Navegação principal">
         <ul>
-          <li><a href="#sobre"><span class="nav-index">01</span>Sobre</a></li>
-          <li><a href="#experiencia"><span class="nav-index">02</span>Experiência</a></li>
-          <li><a href="#stack"><span class="nav-index">03</span>Stack</a></li>
-          <li><a href="#projetos"><span class="nav-index">04</span>Projetos</a></li>
-          <li><a href="#contato"><span class="nav-index">05</span>Contato</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#experiencia">Trajetória</a></li>
+          <li><a href="#projetos">Projetos</a></li>
+          <li><a href="#stack">Stack</a></li>
+          <li><a href="#contato">Contato</a></li>
         </ul>
       </nav>
 
       <div class="header-actions">
-        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Alternar tema claro e escuro" aria-pressed="false">
-          <span class="theme-toggle-track">
-            <span class="theme-toggle-thumb"></span>
-          </span>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false">
+          <span class="visually-hidden">Tema claro</span>
+          <svg class="i-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M20.3 14.6A8.5 8.5 0 0 1 9.4 3.7a.75.75 0 0 0-1-.92A10 10 0 1 0 21.2 15.6a.75.75 0 0 0-.92-1Z"/></svg>
+          <svg class="i-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0-5a1 1 0 0 1 1 1v1.5a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1Zm0 17.5a1 1 0 0 1 1 1V21a1 1 0 1 1-2 0v-.5a1 1 0 0 1 1-1ZM3 11h1.5a1 1 0 1 1 0 2H3a1 1 0 1 1 0-2Zm16.5 0H21a1 1 0 1 1 0 2h-1.5a1 1 0 1 1 0-2ZM5.6 4.2l1.1 1.1a1 1 0 0 1-1.4 1.4L4.2 5.6a1 1 0 0 1 1.4-1.4Zm13.1 13.1 1.1 1.1a1 1 0 0 1-1.4 1.4l-1.1-1.1a1 1 0 0 1 1.4-1.4ZM19.8 5.6l-1.1 1.1a1 1 0 0 1-1.4-1.4l1.1-1.1a1 1 0 0 1 1.4 1.4ZM6.7 18.7l-1.1 1.1a1 1 0 0 1-1.4-1.4l1.1-1.1a1 1 0 0 1 1.4 1.4Z"/></svg>
         </button>
-        <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-nav">
-          <span></span><span></span><span></span>
+        <button class="icon-btn menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+          <span class="visually-hidden" id="menu-toggle-label">Abrir menu</span>
+          <span class="menu-bars" aria-hidden="true"><span></span><span></span></span>
         </button>
       </div>
     </div>
@@ -57,288 +96,529 @@
   <main id="main">
 
     <!-- ===== HERO ===== -->
-    <section class="hero" id="top">
-      <div class="hero-inner">
-        <div class="hero-gutter" aria-hidden="true">
-          <span>01</span><span>02</span><span>03</span><span>04</span><span>05</span>
-        </div>
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-grid-bg" aria-hidden="true"></div>
 
-        <div class="hero-content">
-          <p class="hero-kicker">// software engineer</p>
-          <h1 class="hero-name">
-            <span class="hero-line">Enzo</span>
-            <span class="hero-line hero-line-accent">Napoleão</span>
-          </h1>
-          <p class="hero-role">
-            <span id="typewriter"></span><span class="type-cursor" aria-hidden="true">_</span>
+      <div class="container hero-layout">
+        <div class="hero-copy">
+          <p class="hero-eyebrow">
+            <span class="status-dot" aria-hidden="true"></span>
+            Software Engineer <span class="sep" aria-hidden="true">/</span> Back-end · Python
           </p>
-          <p class="hero-desc">
-            Engenheiro de Software, dedicado ao desenvolvimento Fullstack com Python.
-            Transformo sua ideia em projetos reais, com consistência.
+
+          <h1 class="hero-title" id="hero-title">
+            <span>Enzo</span>
+            <span class="hero-title-dim">Napoleão</span>
+          </h1>
+
+          <p class="hero-lead">
+            Construo <strong>sistemas</strong>, <strong>automações</strong> e <strong>integrações</strong> em Python.
+            Software que entende o processo antes de automatizá-lo.
           </p>
 
           <div class="hero-actions">
-            <a href="#projetos" class="btn btn-primary">Ver projetos</a>
-            <a href="#contato" class="btn btn-ghost">Entrar em contato</a>
-          </div>
-
-          <div class="hero-socials">
-            <a href="https://github.com/nxpoleao" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Enzo Napoleão (edite o link)">
-              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.87-1.36-3.87-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.25 5.69.41.36.78 1.06.78 2.14 0 1.54-.01 2.79-.01 3.17 0 .3.2.66.79.55A10.52 10.52 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
-              <span>GitHub</span>
+            <a href="#projetos" class="btn btn-primary">
+              Ver projetos
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M11 4h2v12.2l5.3-5.3 1.4 1.4L12 20l-7.7-7.7 1.4-1.4 5.3 5.3V4Z"/></svg>
             </a>
-            <a href="https://www.linkedin.com/in/enzonapole%C3%A3o/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Enzo Napoleão (edite o link)">
-              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.15 1.45-2.15 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.27 2.38 4.27 5.47v6.27ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>
-              <span>LinkedIn</span>
-            </a>
-            <a href="https://instagram.com/naapoleao.dev" target="_blank" rel="noopener noreferrer" aria-label="Instagram @naapoleao.dev">
-              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.73 3.73 0 0 1-1.38-.9 3.73 3.73 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07c-1.28.06-2.15.26-2.91.56a5.9 5.9 0 0 0-2.13 1.39A5.9 5.9 0 0 0 .62 4.14c-.3.76-.5 1.63-.56 2.91C0 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.28.26 2.15.56 2.91.31.8.72 1.47 1.39 2.13a5.9 5.9 0 0 0 2.13 1.39c.76.3 1.63.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.28-.06 2.15-.26 2.91-.56a5.9 5.9 0 0 0 2.13-1.39 5.9 5.9 0 0 0 1.39-2.13c.3-.76.5-1.63.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.28-.26-2.15-.56-2.91a5.9 5.9 0 0 0-1.39-2.13A5.9 5.9 0 0 0 19.86.63c-.76-.3-1.63-.5-2.91-.56C15.67.01 15.26 0 12 0Zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84Zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.4-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0Z"/></svg>
-              <span>@naapoleao.dev</span>
-            </a>
+            <a href="#contato" class="btn btn-ghost">Falar comigo</a>
           </div>
         </div>
+
+        <figure class="code-panel" aria-labelledby="code-panel-caption">
+          <div class="code-panel-bar">
+            <span class="code-tab" aria-hidden="true">
+              <svg viewBox="0 0 16 16" width="12" height="12"><rect x="1" y="1" width="6" height="6" fill="currentColor"/><rect x="9" y="9" width="6" height="6" fill="currentColor" opacity=".5"/></svg>
+              enzo.py
+            </span>
+            <button class="run-btn" id="run-btn" type="button" aria-controls="code-output">
+              <svg viewBox="0 0 16 16" width="10" height="10" aria-hidden="true"><path fill="currentColor" d="M3 1.5v13L14 8 3 1.5Z"/></svg>
+              Executar
+            </button>
+          </div>
+          <figcaption class="visually-hidden" id="code-panel-caption">Apresentação em código Python: uma dataclass Engineer com nome, cargo e foco de Enzo Napoleão.</figcaption>
+<pre class="code" tabindex="0" aria-label="Código de enzo.py"><code><span class="ln"><span class="k">from</span> dataclasses <span class="k">import</span> dataclass</span>
+<span class="ln"></span>
+<span class="ln"><span class="f">@dataclass</span></span>
+<span class="ln"><span class="k">class</span> <span class="t">Engineer</span>:</span>
+<span class="ln">    name: <span class="t">str</span> = <span class="s">"Enzo Napoleão"</span></span>
+<span class="ln">    role: <span class="t">str</span> = <span class="s">"Software Engineer"</span></span>
+<span class="ln">    focus: <span class="t">tuple</span> = (<span class="s">"back-end"</span>, <span class="s">"python"</span>,</span>
+<span class="ln">                    <span class="s">"sistemas"</span>, <span class="s">"automação"</span>)</span>
+<span class="ln"></span>
+<span class="ln">    <span class="k">def</span> <span class="f">solve</span>(self, problem):</span>
+<span class="ln">        flow = self.understand(problem)</span>
+<span class="ln">        <span class="k">return</span> self.automate(flow)</span>
+<span class="ln"></span>
+<span class="ln"><span class="k">if</span> __name__ == <span class="s">"__main__"</span>:</span>
+<span class="ln">    <span class="f">print</span>(Engineer())</span></code></pre>
+          <div class="code-output" id="code-output" role="status" aria-live="polite" hidden></div>
+          <div class="code-panel-status" aria-hidden="true">
+            <span>Python</span><span>UTF-8</span><span>LF</span>
+          </div>
+        </figure>
       </div>
 
-      <button class="scroll-hint" id="scroll-hint" aria-label="Rolar para a seção Sobre">
-        <span>scroll</span>
-        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12 16.5 4.5 9l1.4-1.4L12 13.7l6.1-6.1L19.5 9 12 16.5Z"/></svg>
-      </button>
+      <div class="container">
+        <dl class="spec-strip">
+          <div>
+            <dt>Atuação</dt>
+            <dd>Assistente da Qualidade e Sistemas</dd>
+          </div>
+          <div>
+            <dt>Formação</dt>
+            <dd>Engenharia de Software</dd>
+          </div>
+          <div>
+            <dt>Foco</dt>
+            <dd>Back-end com Python</dd>
+          </div>
+          <div>
+            <dt>Handle</dt>
+            <dd><a href="https://instagram.com/naapoleao.dev" target="_blank" rel="noopener noreferrer">@naapoleao.dev</a></dd>
+          </div>
+        </dl>
+      </div>
     </section>
 
     <!-- ===== SOBRE ===== -->
-    <section class="section" id="sobre">
-      <div class="section-inner">
-        <div class="section-gutter" aria-hidden="true"><span>02</span></div>
+    <section class="section" id="sobre" aria-labelledby="sobre-title" data-path="~/sobre">
+      <div class="container about-layout">
+        <header class="section-head about-head reveal">
+          <p class="path" aria-hidden="true">~/sobre</p>
+          <h2 id="sobre-title">Entendo o processo. <span class="dim">Depois escrevo o código.</span></h2>
+        </header>
 
-        <div class="about-grid reveal">
-          <div class="about-text">
-            <h2 class="section-title">Sobre mim</h2>
-            <p>
-              Sou <strong>Engenheiro de Software especializado em desenvolvimento Fullstack com Python</strong>, apaixonado por transformar ideias em soluções digitais.
-            </p>
-            <p>
-              Atuo na área de <strong>Qualidade e Sistemas</strong>, onde uno minha experiência profissional à tecnologia para construir, aprender e evoluir constantemente como desenvolvedor.
-            </p>
-            <p>
-              Meu caminho não começou na programação, mas cada projeto pessoal que construo é um passo
-              a mais na direção que escolhi: sair da teoria e colocar sistemas reais em pé, do banco de
-              dados à interface.
-            </p>
-            <p>
-              Ainda estou em evolução — e é assim que quero apresentar meu trabalho: não como alguém que
-              já sabe tudo, mas como alguém que aprende construindo.
-            </p>
+        <div class="about-body reveal">
+          <p class="about-lead">
+            Sou engenheiro de software, com formação em Engenharia de Software e foco em back-end com Python.
+            Hoje, como <strong>Assistente da Qualidade e Sistemas</strong>, programo, desenvolvo sistemas,
+            automatizo rotinas e cuido de integrações e suporte de TI.
+          </p>
+          <p>
+            Minha trajetória começou na Qualidade, e isso define como eu trabalho: antes de automatizar,
+            mapeio o fluxo, encontro onde ele falha e só então transformo em software, do banco de dados
+            à interface, indo para o fullstack quando o problema pede.
+          </p>
+
+          <div class="daily">
+            <h3 class="label">No dia a dia</h3>
+            <ul class="daily-list">
+              <li>Programação</li>
+              <li>Desenvolvimento de sistemas</li>
+              <li>Automação de processos</li>
+              <li>Integrações</li>
+              <li>Suporte de TI</li>
+              <li>Melhoria de processos</li>
+              <li>Solução de problemas</li>
+            </ul>
           </div>
-
-          <aside class="terminal-card" aria-hidden="true">
-            <div class="terminal-card-bar">
-              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-              <span class="terminal-card-title">whoami.py</span>
-            </div>
-            <pre class="terminal-card-body"><code><span class="tok-kw">class</span> <span class="tok-cls">Enzo</span>:
-      nome = <span class="tok-str">"Enzo Napoleão"</span>
-      cargo_atual = <span class="tok-str">"Assistente da Qualidade e Sistemas"</span>
-      formacao = <span class="tok-str">"Engenharia de Software"</span>
-      foco = <span class="tok-str">"Fullstack com Python"</span>
-
-    <span class="tok-kw">def</span> <span class="tok-fn">status</span>(self):
-        <span class="tok-kw">return</span> <span class="tok-str">"aprendendo. construindo. evoluindo."</span></code></pre>
-          </aside>
-        </div>
-
-        <div class="narrative-track reveal">
-          <span class="narrative-step">Aprendizado</span>
-          <span class="narrative-sep" aria-hidden="true">→</span>
-          <span class="narrative-step">Construção</span>
-          <span class="narrative-sep" aria-hidden="true">→</span>
-          <span class="narrative-step">Evolução</span>
-          <span class="narrative-sep" aria-hidden="true">→</span>
-          <span class="narrative-step narrative-step-accent">Carreira</span>
         </div>
       </div>
     </section>
 
-    <!-- ===== EXPERIÊNCIA ===== -->
-    <section class="section" id="experiencia">
-      <div class="section-inner">
-        <div class="section-gutter" aria-hidden="true"><span>03</span></div>
+    <!-- ===== TRAJETÓRIA ===== -->
+    <section class="section" id="experiencia" aria-labelledby="exp-title" data-path="~/trajetoria">
+      <div class="container">
+        <header class="section-head split-head reveal">
+          <div>
+            <p class="path" aria-hidden="true">~/trajetoria</p>
+            <h2 id="exp-title">De processos a sistemas.</h2>
+          </div>
+          <p class="section-lede">
+            Quatro funções na mesma direção. Cada etapa adicionou uma camada ao escopo:
+            processo, dados e, agora, software.
+          </p>
+        </header>
 
-        <h2 class="section-title reveal">Experiência</h2>
-        <p class="section-lede reveal">Minha trajetória na área de Qualidade e Sistemas.</p>
+        <div class="domains reveal" aria-hidden="true">
+          <span>Qualidade</span>
+          <span>Dados</span>
+          <span class="is-current">Sistemas &amp; TI</span>
+        </div>
 
-        <ol class="timeline">
-          <li class="timeline-item reveal">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-              <span class="timeline-period">Início</span>
-              <h3>Estagiário da Qualidade</h3>
-              <p>Primeiro contato com processos de qualidade e documentação.</p>
-            </div>
+        <ol class="track reveal" id="track">
+          <li class="milestone">
+            <span class="node" aria-hidden="true"></span>
+            <p class="milestone-meta">Qualidade</p>
+            <h3>Estagiário — Qualidade</h3>
+            <ul class="diff" aria-label="Escopo adicionado">
+              <li>processos de qualidade</li>
+              <li>documentação</li>
+            </ul>
           </li>
-          <li class="timeline-item reveal">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-              <span class="timeline-period">Em seguida</span>
-              <h3>Assistente da Qualidade</h3>
-              <p>Efetivação na área, com maior responsabilidade sobre rotinas e documentação do SGQ.</p>
-            </div>
+          <li class="milestone">
+            <span class="node" aria-hidden="true"></span>
+            <p class="milestone-meta">Qualidade</p>
+            <h3>Assistente da Qualidade</h3>
+            <ul class="diff" aria-label="Escopo adicionado">
+              <li>rotinas do SGQ</li>
+              <li>responsabilidade sobre a documentação</li>
+            </ul>
           </li>
-          <li class="timeline-item reveal">
-            <div class="timeline-marker"></div>
-            <div class="timeline-content">
-              <span class="timeline-period">Em seguida</span>
-              <h3>Assistente de Inteligência de Negócios</h3>
-              <p>Atuação voltada à análise e organização de dados e informações do negócio.</p>
-            </div>
+          <li class="milestone">
+            <span class="node" aria-hidden="true"></span>
+            <p class="milestone-meta">Dados</p>
+            <h3>Assistente da Inteligência de Negócios</h3>
+            <ul class="diff" aria-label="Escopo adicionado">
+              <li>análise de dados do negócio</li>
+              <li>organização de informações</li>
+            </ul>
           </li>
-          <li class="timeline-item reveal">
-            <div class="timeline-marker timeline-marker-current"></div>
-            <div class="timeline-content">
-              <span class="timeline-period">Atualmente</span>
-              <h3>Assistente da Qualidade e Sistemas</h3>
-              <p>Atuação atual, unindo processos de qualidade a sistemas — ponto de partida para a transição ao desenvolvimento.</p>
-            </div>
+          <li class="milestone is-current">
+            <span class="node" aria-hidden="true"></span>
+            <p class="milestone-meta">Sistemas &amp; TI <span class="badge">atual</span></p>
+            <h3>Assistente da Qualidade e Sistemas</h3>
+            <ul class="diff" aria-label="Escopo adicionado">
+              <li>programação e desenvolvimento de sistemas</li>
+              <li>automação de processos</li>
+              <li>integrações</li>
+              <li>suporte de TI</li>
+              <li>melhoria de processos</li>
+            </ul>
           </li>
         </ol>
       </div>
     </section>
 
-    <!-- ===== STACK ===== -->
-    <section class="section" id="stack">
-      <div class="section-inner">
-        <div class="section-gutter" aria-hidden="true"><span>04</span></div>
+    <!-- ===== PROJETOS ===== -->
+    <section class="section" id="projetos" aria-labelledby="projetos-title" data-path="~/projetos">
+      <div class="container">
+        <header class="section-head split-head reveal">
+          <div>
+            <p class="path" aria-hidden="true">~/projetos</p>
+            <h2 id="projetos-title">Projetos.</h2>
+          </div>
+          <p class="section-lede">
+            Contexto, solução e decisões técnicas. Detalhes aparecem só onde podem ser verificados;
+            projetos corporativos preservam o que é confidencial.
+          </p>
+        </header>
 
-        <h2 class="section-title reveal">Stack &amp; tecnologias</h2>
-        <p class="section-lede reveal">Ferramentas que uso e estudo no dia a dia — em constante evolução.</p>
+        <nav class="case-index reveal" aria-label="Índice de projetos">
+          <ol>
+            <li><a href="#case-atlas"><span class="ci-name">ATLAS</span><span class="ci-type">Ferramenta interna</span><span class="ci-stack">Python · Flask</span></a></li>
+            <li><a href="#case-cofrinho"><span class="ci-name">Cofrinho</span><span class="ci-type">App de finanças pessoais</span><span class="ci-stack">JS · Firebase</span></a></li>
+            <li><a href="#case-brysa"><span class="ci-name">BRYSA</span><span class="ci-type">E-commerce</span><span class="ci-stack">Python · Flask · SQLite</span></a></li>
+            <li><a href="#case-rapanui"><span class="ci-name">Rapanui Natural</span><span class="ci-type">Site institucional</span><span class="ci-stack">Web</span></a></li>
+          </ol>
+        </nav>
 
-        <div class="stack-grid reveal">
-          <div class="stack-group">
-            <h3>Backend</h3>
-            <ul class="tag-list">
-              <li>Python</li>
-              <li>Flask</li>
+        <!-- 01 · ATLAS -->
+        <article class="case reveal" id="case-atlas" aria-labelledby="atlas-title">
+          <header class="case-head">
+            <div>
+              <h3 id="atlas-title">ATLAS</h3>
+              <p class="case-kind">Ferramenta interna · Uso corporativo</p>
+            </div>
+            <ul class="chips" aria-label="Tecnologias">
+              <li>Python</li><li>Flask</li>
             </ul>
+          </header>
+
+          <div class="case-body">
+            <dl class="case-spec">
+              <div>
+                <dt>Contexto</dt>
+                <dd>Rotinas internas de gestão de dados e emissão de documentos na empresa onde trabalho.</dd>
+              </div>
+              <div>
+                <dt>Solução</dt>
+                <dd>Aplicação web em Python com Flask que apoia a gestão desses dados e automatiza a geração de documentos.</dd>
+              </div>
+              <div>
+                <dt>Confidencialidade</dt>
+                <dd>
+                  Projeto corporativo: regras de negócio, dados e telas não são divulgados publicamente.
+                  <span class="redacted" role="img" aria-label="Trecho confidencial omitido">
+                    <span></span><span></span><span></span>
+                  </span>
+                </dd>
+              </div>
+              <!-- EDITAR: se puder divulgar, adicione aqui banco de dados, deploy e integrações do ATLAS. -->
+            </dl>
+
+            <figure class="arch" aria-labelledby="atlas-arch">
+              <figcaption id="atlas-arch" class="label">Fluxo</figcaption>
+              <ol class="flow">
+                <li class="flow-node"><span class="fn-kind">entrada</span><strong>Dados internos</strong></li>
+                <li class="flow-node is-core"><span class="fn-kind">aplicação</span><strong>ATLAS</strong><span class="fn-detail">Python · Flask</span><span class="fn-sub">gestão de dados</span></li>
+                <li class="flow-node"><span class="fn-kind">saída</span><strong>Documentos gerados</strong><span class="fn-detail">automaticamente</span></li>
+              </ol>
+            </figure>
           </div>
-          <div class="stack-group">
-            <h3>Frontend</h3>
-            <ul class="tag-list">
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>JavaScript</li>
+
+          <footer class="case-foot">
+            <span class="access"><svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path fill="currentColor" d="M5 7V5a3 3 0 1 1 6 0v2h1v7H4V7h1Zm1.5 0h3V5a1.5 1.5 0 0 0-3 0v2Z"/></svg> Projeto interno, sem link público</span>
+          </footer>
+        </article>
+
+        <!-- 02 · COFRINHO -->
+        <article class="case case-media reveal" id="case-cofrinho" aria-labelledby="cofrinho-title">
+          <header class="case-head">
+            <div>
+              <h3 id="cofrinho-title">Cofrinho</h3>
+              <p class="case-kind">App web de finanças pessoais · Mobile-first</p>
+            </div>
+            <ul class="chips" aria-label="Tecnologias">
+              <li>HTML</li><li>CSS</li><li>JavaScript</li><li>Firebase Auth</li><li>Cloud Firestore</li><li>Chart.js</li>
             </ul>
+          </header>
+
+          <div class="case-body">
+            <dl class="case-spec">
+              <div>
+                <dt>Contexto</dt>
+                <dd>Registrar entradas e saídas, acompanhar metas e entender para onde vai o dinheiro, direto do celular.</dd>
+              </div>
+              <div>
+                <dt>Solução</dt>
+                <dd>
+                  <ul class="bullets">
+                    <li>Lançamentos categorizados, com categorias personalizáveis</li>
+                    <li>Despesas fixas mensais e compras parceladas</li>
+                    <li>Metas com progresso visual</li>
+                    <li>Gastos por categoria e comparativo dos últimos 4 meses</li>
+                    <li>Navegação por mês e indicador de sincronização</li>
+                  </ul>
+                </dd>
+              </div>
+              <div>
+                <dt>Decisões técnicas</dt>
+                <dd>
+                  <ul class="bullets">
+                    <li>Sem servidor próprio: login com Google via Firebase Authentication</li>
+                    <li>Dados isolados por usuário em <code>users/{uid}/…</code> no Firestore</li>
+                    <li>Listeners <code>onSnapshot</code> atualizam a interface em tempo real</li>
+                    <li>Zero build: um único arquivo com o SDK modular do Firebase via CDN</li>
+                  </ul>
+                </dd>
+              </div>
+            </dl>
+
+            <div class="case-visual">
+              <figure class="phone">
+                <img src="assets/images/cofrinho-app.jpg" alt="Tela inicial do Cofrinho: saldo do mês, cards de entradas e saídas, gastos por categoria e comparativo dos últimos 4 meses." width="544" height="1180" loading="lazy" decoding="async">
+              </figure>
+
+              <figure class="arch" aria-labelledby="cofrinho-arch">
+                <figcaption id="cofrinho-arch" class="label">Arquitetura</figcaption>
+                <ol class="flow">
+                  <li class="flow-node"><span class="fn-kind">cliente</span><strong>SPA mobile-first</strong><span class="fn-detail">HTML · CSS · JS · Chart.js</span></li>
+                  <li class="flow-edge">Google Sign-In</li>
+                  <li class="flow-node"><span class="fn-kind">auth</span><strong>Firebase Authentication</strong></li>
+                  <li class="flow-edge">uid</li>
+                  <li class="flow-node is-core"><span class="fn-kind">dados</span><strong>Cloud Firestore</strong>
+                    <span class="fn-tree"><code>users/{uid}/</code><code>├─ transactions</code><code>├─ goals</code><code>└─ recurrents</code></span>
+                  </li>
+                  <li class="flow-edge flow-edge-back">onSnapshot → tempo real</li>
+                </ol>
+              </figure>
+            </div>
           </div>
-          <div class="stack-group">
-            <h3>Banco de dados</h3>
-            <ul class="tag-list">
-              <li>SQL</li>
-              <li>SQLite</li>
+
+          <footer class="case-foot">
+            <a class="link-arrow" href="https://github.com/nxpoleao/cofrinho" target="_blank" rel="noopener noreferrer">
+              Código no GitHub <span class="visually-hidden">(abre em nova aba)</span>
+              <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path fill="currentColor" d="M4.5 3h8.5v8.5h-1.6V5.7l-7.2 7.2-1.1-1.1 7.2-7.2H4.5V3Z"/></svg>
+            </a>
+          </footer>
+        </article>
+
+        <!-- 03 · BRYSA -->
+        <article class="case reveal" id="case-brysa" aria-labelledby="brysa-title">
+          <header class="case-head">
+            <div>
+              <h3 id="brysa-title">BRYSA</h3>
+              <p class="case-kind">E-commerce · Moda fitness feminina</p>
+            </div>
+            <ul class="chips" aria-label="Tecnologias">
+              <li>Python</li><li>Flask</li><li>SQLite</li><li>HTML</li><li>CSS</li><li>JavaScript</li>
             </ul>
+          </header>
+
+          <div class="case-body">
+            <dl class="case-spec">
+              <div>
+                <dt>Contexto</dt>
+                <dd>Loja virtual para uma marca de roupas fitness femininas, com operação de venda e gestão no mesmo sistema.</dd>
+              </div>
+              <div>
+                <dt>Solução</dt>
+                <dd>
+                  <div class="modules">
+                    <div>
+                      <h4>Loja</h4>
+                      <ul><li>Catálogo com galeria de imagens</li><li>Carrinho</li><li>Checkout</li></ul>
+                    </div>
+                    <div>
+                      <h4>Conta</h4>
+                      <ul><li>Autenticação de usuários</li><li>Controle de acesso</li></ul>
+                    </div>
+                    <div>
+                      <h4>Admin</h4>
+                      <ul><li>Painel administrativo</li><li>Gestão de produtos e pedidos</li></ul>
+                    </div>
+                  </div>
+                </dd>
+              </div>
+            </dl>
+
+            <figure class="arch" aria-labelledby="brysa-arch">
+              <figcaption id="brysa-arch" class="label">Arquitetura</figcaption>
+              <ol class="flow">
+                <li class="flow-node"><span class="fn-kind">cliente</span><strong>Interface web</strong><span class="fn-detail">HTML · CSS · JavaScript</span></li>
+                <li class="flow-node is-core"><span class="fn-kind">aplicação</span><strong>Flask</strong><span class="fn-detail">Python</span><span class="fn-sub">loja · conta · admin</span></li>
+                <li class="flow-node"><span class="fn-kind">persistência</span><strong>SQLite</strong></li>
+              </ol>
+            </figure>
           </div>
-          <div class="stack-group">
-            <h3>Ferramentas</h3>
-            <ul class="tag-list">
-              <li>Git</li>
-              <li>GitHub</li>
-            </ul>
+
+          <footer class="case-foot">
+            <span class="access"><svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path fill="currentColor" d="M5 7V5a3 3 0 1 1 6 0v2h1v7H4V7h1Zm1.5 0h3V5a1.5 1.5 0 0 0-3 0v2Z"/></svg> Repositório privado</span>
+            <!-- EDITAR: se o repositório ou a loja ficarem públicos, troque o span acima por um link. -->
+          </footer>
+        </article>
+
+        <!-- 04 · RAPANUI -->
+        <article class="case case-compact reveal" id="case-rapanui" aria-labelledby="rapanui-title">
+          <header class="case-head">
+            <div>
+              <h3 id="rapanui-title">Rapanui Natural</h3>
+              <p class="case-kind">Site institucional · Florianópolis, SC</p>
+            </div>
+          </header>
+
+          <div class="case-body">
+            <dl class="case-spec case-spec-row">
+              <div>
+                <dt>Contexto</dt>
+                <dd>Presença digital para a Rapanui Natural, loja física de produtos naturais e café.</dd>
+              </div>
+              <div>
+                <dt>Abordagem</dt>
+                <dd>A identidade do site parte de fotos e vídeo que gravei dentro da própria loja, e não de banco de imagens.</dd>
+              </div>
+              <!-- EDITAR: adicione aqui a stack e o link do site quando estiverem definidos. -->
+            </dl>
           </div>
-        </div>
+        </article>
       </div>
     </section>
 
-    <!-- ===== PROJETOS ===== -->
-    <section class="section" id="projetos">
-      <div class="section-inner">
-        <div class="section-gutter" aria-hidden="true"><span>05</span></div>
+    <!-- ===== STACK ===== -->
+    <section class="section" id="stack" aria-labelledby="stack-title" data-path="~/stack">
+      <div class="container">
+        <header class="section-head split-head reveal">
+          <div>
+            <p class="path" aria-hidden="true">~/stack</p>
+            <h2 id="stack-title">Stack, em camadas.</h2>
+          </div>
+          <p class="section-lede">
+            Organizada como um sistema: cada camada tem um papel. Onde houver, indico
+            em quais projetos a tecnologia aparece.
+          </p>
+        </header>
 
-        <h2 class="section-title reveal">Projetos</h2>
-        <p class="section-lede reveal">Projetos reais, construídos para aplicar o que estudo na prática.</p>
-
-        <div class="projects-list">
-
-          <article class="project reveal">
-            <div class="project-media">
-              <img src="assets/images/brysa-mockup.svg" alt="Mockup da interface do e-commerce BRYSA" loading="lazy" width="640" height="480">
-            </div>
-            <div class="project-info">
-              <span class="project-eyebrow">01 — E-commerce</span>
-              <h3>BRYSA</h3>
-              <p>
-                Loja virtual para uma marca de roupas fitness femininas, com autenticação de usuários,
-                carrinho de compras, checkout e um painel administrativo para gerenciamento de produtos
-                e pedidos.
-              </p>
-              <ul class="project-tech">
-                <li>Python</li><li>Flask</li><li>HTML</li><li>CSS</li><li>JavaScript</li><li>SQLite</li>
-              </ul>
-              <div class="project-actions">
-                <a href="https://github.com/nxpoleao/brysa" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Ver projeto</a>
-                <a href="https://github.com/nxpoleao/brysa" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">
-                  <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.87-1.36-3.87-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.25 5.69.41.36.78 1.06.78 2.14 0 1.54-.01 2.79-.01 3.17 0 .3.2.66.79.55A10.52 10.52 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
-                  GitHub
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project project-reverse reveal">
-            <div class="project-media">
-              <img src="assets/images/cofrinho-mockup.png" alt="Mockup da interface do app Cofrinho" loading="lazy" width="640" height="480">
-            </div>
-            <div class="project-info">
-              <span class="project-eyebrow">02 — App de Controle Financeiro</span>
-              <h3>Cofrinho</h3>
-              <p class="project-editable">
-                App de controle financeiro pessoal desenvolvido do zero, com foco em praticidade e experiência mobile-first.
-                O app permite registrar entradas e saídas, categorizar gastos, acompanhar metas financeiras com progresso visual e navegar pelo histórico mensal com comparativos entre períodos.
-              </p>
-              <ul class="project-tech project-tech-placeholder">
-                <li>HTML</li><li>CSS</li><li>JavaScript</li><li>Firebase Authentication</li><li>Cloud Firestore</li>
-              </ul>
-              <div class="project-actions">
-                <a href="https://github.com/nxpoleao/cofrinho" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Ver projeto</a>
-                <a href="https://github.com/nxpoleao/cofrinho" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">
-                  <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.87-1.36-3.87-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.25 5.69.41.36.78 1.06.78 2.14 0 1.54-.01 2.79-.01 3.17 0 .3.2.66.79.55A10.52 10.52 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
-                  GitHub
-                </a>
-              </div>
-            </div>
-          </article>
-
+        <div class="layers reveal" id="layers">
+          <div class="layer layer-core">
+            <p class="layer-name">Linguagem</p>
+            <ul class="layer-tech">
+              <li data-cases="atlas brysa">Python</li>
+            </ul>
+            <p class="layer-cases">em <a href="#case-atlas" data-case="atlas">ATLAS</a>, <a href="#case-brysa" data-case="brysa">BRYSA</a></p>
+          </div>
+          <div class="layer">
+            <p class="layer-name">Back-end &amp; APIs</p>
+            <ul class="layer-tech">
+              <li data-cases="atlas brysa">Flask</li>
+              <li>FastAPI</li>
+              <li>REST APIs</li>
+            </ul>
+            <p class="layer-cases">em <a href="#case-atlas" data-case="atlas">ATLAS</a>, <a href="#case-brysa" data-case="brysa">BRYSA</a></p>
+          </div>
+          <div class="layer">
+            <p class="layer-name">Dados</p>
+            <ul class="layer-tech">
+              <li>SQL</li>
+              <li>PostgreSQL</li>
+              <li>Supabase</li>
+              <li data-cases="brysa">SQLite</li>
+              <li data-cases="cofrinho">Firebase</li>
+            </ul>
+            <p class="layer-cases">em <a href="#case-brysa" data-case="brysa">BRYSA</a>, <a href="#case-cofrinho" data-case="cofrinho">Cofrinho</a></p>
+          </div>
+          <div class="layer">
+            <p class="layer-name">Interface</p>
+            <ul class="layer-tech">
+              <li data-cases="brysa cofrinho">HTML</li>
+              <li data-cases="brysa cofrinho">CSS</li>
+              <li data-cases="brysa cofrinho">JavaScript</li>
+            </ul>
+            <p class="layer-cases">em <a href="#case-brysa" data-case="brysa">BRYSA</a>, <a href="#case-cofrinho" data-case="cofrinho">Cofrinho</a></p>
+          </div>
+          <div class="layer">
+            <p class="layer-name">Versionamento</p>
+            <ul class="layer-tech">
+              <li data-cases="cofrinho">Git</li>
+              <li data-cases="cofrinho">GitHub</li>
+            </ul>
+            <p class="layer-cases"><a href="https://github.com/nxpoleao" target="_blank" rel="noopener noreferrer">github.com/nxpoleao<span class="visually-hidden"> (abre em nova aba)</span></a></p>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- ===== CONTATO ===== -->
-    <section class="section section-contact" id="contato">
-      <div class="section-inner">
-        <div class="section-gutter" aria-hidden="true"><span>06</span></div>
+    <section class="section contact" id="contato" aria-labelledby="contact-title" data-path="~/contato">
+      <div class="container">
+        <p class="path reveal" aria-hidden="true">~/contato</p>
+        <h2 class="contact-title reveal" id="contact-title">
+          Todo processo manual é um sistema <span class="dim">esperando para ser escrito.</span><span class="caret" aria-hidden="true"></span>
+        </h2>
 
-        <div class="contact-block reveal">
-          <h2 class="contact-title">Vamos construir alguma coisa?</h2>
-          <p class="contact-desc">
-            Estou aberto a conversas sobre oportunidades, projetos e trocas com outros desenvolvedores.
-            Envie uma mensagem — respondo o quanto antes.
+        <div class="contact-layout reveal">
+          <p class="contact-lede">
+            Tem um problema que pode ser resolvido com software, seja um sistema interno, uma automação ou
+            uma integração? Me conte o contexto e a gente descobre o caminho.
           </p>
 
-          <div class="contact-links">
-            <a class="contact-link" href="mailto:ennapoleao@gmail.com">
-              <span class="contact-link-label">E-mail</span>
-              <span class="contact-link-value">ennapoleao@gmail.com</span>
-            </a>
-            <a class="contact-link" href="https://github.com/nxpoleao" target="_blank" rel="noopener noreferrer">
-              <span class="contact-link-label">GitHub</span>
-              <span class="contact-link-value">github.com/nxpoleao</span>
-            </a>
-            <a class="contact-link" href="https://www.linkedin.com/in/enzonapole%C3%A3o/" target="_blank" rel="noopener noreferrer">
-              <span class="contact-link-label">LinkedIn</span>
-              <span class="contact-link-value">linkedin.com/in/enzonapoleão</span>
-            </a>
-            <a class="contact-link" href="https://instagram.com/naapoleao.dev" target="_blank" rel="noopener noreferrer">
-              <span class="contact-link-label">Instagram</span>
-              <span class="contact-link-value">@naapoleao.dev</span>
-            </a>
+          <div class="contact-email">
+            <a class="btn btn-primary btn-lg" href="mailto:ennapoleao@gmail.com">ennapoleao@gmail.com</a>
+            <button class="btn btn-ghost btn-lg copy-btn" id="copy-email" type="button" data-copy="ennapoleao@gmail.com" hidden>
+              <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M5 1h8a1 1 0 0 1 1 1v9h-1.5V2.5H5V1ZM2 4h8a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Zm.5 1.5v8h7v-8h-7Z"/></svg>
+              <span class="copy-label">Copiar e-mail</span>
+            </button>
+            <span class="visually-hidden" id="copy-status" role="status" aria-live="polite"></span>
           </div>
         </div>
+
+        <ul class="channels reveal">
+          <li>
+            <a href="https://github.com/nxpoleao" target="_blank" rel="noopener noreferrer">
+              <span class="ch-name">GitHub</span>
+              <span class="ch-handle">github.com/nxpoleao</span>
+              <span class="visually-hidden">(abre em nova aba)</span>
+              <svg class="ch-arrow" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M4.5 3h8.5v8.5h-1.6V5.7l-7.2 7.2-1.1-1.1 7.2-7.2H4.5V3Z"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/enzonapole%C3%A3o/" target="_blank" rel="noopener noreferrer">
+              <span class="ch-name">LinkedIn</span>
+              <span class="ch-handle">linkedin.com/in/enzonapoleão</span>
+              <span class="visually-hidden">(abre em nova aba)</span>
+              <svg class="ch-arrow" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M4.5 3h8.5v8.5h-1.6V5.7l-7.2 7.2-1.1-1.1 7.2-7.2H4.5V3Z"/></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://instagram.com/naapoleao.dev" target="_blank" rel="noopener noreferrer">
+              <span class="ch-name">Instagram</span>
+              <span class="ch-handle">@naapoleao.dev</span>
+              <span class="visually-hidden">(abre em nova aba)</span>
+              <svg class="ch-arrow" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M4.5 3h8.5v8.5h-1.6V5.7l-7.2 7.2-1.1-1.1 7.2-7.2H4.5V3Z"/></svg>
+            </a>
+          </li>
+        </ul>
       </div>
     </section>
 
@@ -346,21 +626,20 @@
 
   <!-- ===== FOOTER ===== -->
   <footer class="site-footer">
-    <div class="footer-inner">
-      <p>&copy; <span id="year">2026</span> Enzo Napoleão</p>
-      <p class="footer-brand">NAPOLEÃO<span class="cursor-accent">.DEV</span></p>
-      <div class="footer-links">
-        <a href="https://github.com/nxpoleao" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="https://www.linkedin.com/in/enzonapole%C3%A3o/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="https://instagram.com/naapoleao.dev" target="_blank" rel="noopener noreferrer">Instagram</a>
-      </div>
+    <div class="container footer-inner">
+      <p class="footer-brand">
+        <img src="assets/icons/logo-mark-sm.png" alt="" width="32" height="20" loading="lazy">
+        <span>&copy; <span id="year">2026</span> Enzo Napoleão</span>
+      </p>
+      <p class="footer-note">HTML, CSS e JavaScript. Sem frameworks, sem build.</p>
+      <a class="footer-top" href="#top">Voltar ao topo <span aria-hidden="true">↑</span></a>
     </div>
   </footer>
 
-  <button class="back-to-top" id="back-to-top" type="button" aria-label="Voltar ao topo">
+  <button class="back-to-top" id="back-to-top" type="button" aria-label="Voltar ao topo" tabindex="-1">
     <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 7.5 19.5 15l-1.4 1.4L12 10.3l-6.1 6.1L4.5 15 12 7.5Z"/></svg>
   </button>
 
-  <script src="js/script.js"></script>
+  <script src="js/script.js" defer></script>
 </body>
 </html>
