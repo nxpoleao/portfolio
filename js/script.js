@@ -148,7 +148,7 @@
      ========================================================= */
   var runBtn = document.getElementById('run-btn');
   var output = document.getElementById('code-output');
-  var REPR = "Engineer(name='Enzo Napoleão', role='Software Engineer', focus=('back-end', 'python', 'sistemas', 'automação'))";
+  var REPR = "Engineer(name='Enzo Napoleão', role='Software Engineer', focus=('fullstack', 'python', 'sistemas', 'automação'))";
   var running = false;
 
   function el(tag, cls, text) {
