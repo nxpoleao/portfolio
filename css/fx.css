@@ -1,0 +1,342 @@
+/* =========================================================
+   FX — camada extra de movimento
+   Tudo que anima fica sob .fx (adicionada no <head> quando o
+   sistema não pede movimento reduzido). Sem .fx, o site volta
+   exatamente ao comportamento original.
+   ========================================================= */
+
+/* ---------- Estrutura (não anima, só prepara o texto dividido) ---------- */
+.hero-title .fx-mask {
+  display: block;
+  overflow: hidden;
+  padding-block: 0.2em 0.08em;
+  margin-block: -0.2em -0.08em;
+}
+.hero-title .fx-char,
+.hero-title .fx-ch-in { display: inline-block; }
+.fx-w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-block: 0.08em 0.14em;
+  margin-block: -0.08em -0.14em;
+}
+.fx-w-in { display: inline-block; }
+.fx-packet, .fx-progress, .fx-canvas { display: none; }
+
+/* ---------- Barra de leitura no header ---------- */
+.fx .fx-progress {
+  display: block;
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent-line), var(--accent));
+  transform-origin: left;
+  transform: scaleX(var(--p, 0));
+  pointer-events: none;
+}
+
+/* ---------- Hero: sinais percorrendo a malha ---------- */
+.fx .fx-canvas {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* status "online" */
+.fx .status-dot { position: relative; }
+.fx .status-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  animation: fxPing 2.4s var(--ease-out) infinite;
+}
+@keyframes fxPing {
+  0% { transform: scale(1); opacity: 0.7; }
+  70%, 100% { transform: scale(3.2); opacity: 0; }
+}
+
+/* cargo que alterna, com cursor de terminal */
+.fx-rotator { color: var(--text); white-space: nowrap; }
+.fx .fx-rotator::after {
+  content: '';
+  display: inline-block;
+  width: 0.55em; height: 1.05em;
+  margin-left: 4px;
+  vertical-align: -0.18em;
+  background: var(--accent);
+  animation: blink 1s steps(1) infinite;
+}
+
+/* nome: letras sobem de dentro de uma máscara */
+.fx .hero-title { animation: none; }
+.fx .hero-title:not(.fx-split) { opacity: 0; animation: fxFailsafe 0s 1.2s forwards; }
+@keyframes fxFailsafe { to { opacity: 1; } }
+.fx .fx-ch-in {
+  animation: fxCharUp 1s var(--ease-out) both;
+  animation-delay: calc(120ms + var(--i) * 42ms);
+}
+@keyframes fxCharUp {
+  from { transform: translateY(115%) rotate(8deg); }
+  to { transform: none; }
+}
+.fx .hero-title .fx-char { transition: transform 0.45s var(--ease-out), color 0.25s; }
+.fx .hero-title .fx-char:hover { transform: translateY(-0.07em); color: var(--accent); }
+
+/* botão principal: brilho atravessando no hover */
+.fx .btn { translate: 0 0; transition: background-color var(--t-fast) var(--ease-out), border-color var(--t-fast) var(--ease-out), color var(--t-fast) var(--ease-out), transform var(--t-fast) var(--ease-out), translate 0.35s var(--ease-out); }
+.fx .btn-primary { position: relative; overflow: hidden; isolation: isolate; }
+.fx .btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(105deg, transparent 30%, color-mix(in srgb, #fff 38%, transparent) 50%, transparent 70%);
+  transform: translateX(-110%);
+}
+.fx .btn-primary:hover::before { transform: translateX(110%); transition: transform 0.75s var(--ease-out); }
+
+/* painel de código: linhas "digitadas", inclinação e reflexo */
+.fx .code .ln {
+  animation: fxType 0.55s var(--ease-out) both, fxLineGlow 1.1s ease-out both;
+  animation-delay: calc(520ms + var(--i) * 95ms);
+}
+@keyframes fxType {
+  from { clip-path: inset(0 calc(100% - 3.2em) 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+@keyframes fxLineGlow {
+  from { background-color: var(--accent-soft); }
+}
+.fx .code-panel { transform-style: preserve-3d; }
+.fx .code-panel.fx-settled { animation: none; transition: transform 0.4s var(--ease-out); }
+.fx .code-panel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(460px circle at var(--mx, 50%) var(--my, 0%), var(--accent-soft), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.fx .code-panel:hover::after { opacity: 1; }
+
+.fx .run-btn { position: relative; }
+.fx .run-btn:not(.fx-ran)::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  border: 1px solid var(--add);
+  opacity: 0;
+  animation: fxRunPulse 2.2s var(--ease-out) 2.4s infinite;
+  pointer-events: none;
+}
+@keyframes fxRunPulse {
+  0% { opacity: 0.8; transform: scale(1); }
+  70%, 100% { opacity: 0; transform: scale(1.18, 1.5); }
+}
+.fx .code-output:not([hidden]) { animation: fxOutput 0.45s var(--ease-out); }
+@keyframes fxOutput {
+  from { opacity: 0; transform: translateY(-6px); }
+}
+
+/* faixa de especificações */
+.fx .spec-strip { position: relative; }
+.fx .spec-strip::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; top: -1px;
+  height: 1px;
+  background: var(--accent);
+  transform-origin: left;
+  animation: fxDrawLine 1.4s var(--ease-out) 0.7s both;
+}
+@keyframes fxDrawLine {
+  0% { transform: scaleX(0); opacity: 1; }
+  70% { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(1); opacity: 0; }
+}
+
+/* ---------- Títulos de seção: palavra por palavra ---------- */
+.fx .fx-w-in {
+  transform: translateY(110%);
+  transition: transform 0.9s var(--ease-out);
+  transition-delay: calc(var(--i) * 55ms);
+}
+.fx .is-visible .fx-w-in,
+.fx .is-visible.fx-words .fx-w-in { transform: none; }
+
+.fx .path.fx-typing::after {
+  content: '';
+  display: inline-block;
+  width: 0.55em; height: 1.05em;
+  margin-left: 2px;
+  vertical-align: -0.18em;
+  background: var(--accent);
+}
+
+/* ---------- Sobre ---------- */
+.fx .about-lead strong {
+  background: linear-gradient(var(--accent-soft), var(--accent-soft)) no-repeat 0 88% / 0% 0.5em;
+  transition: background-size 1.1s var(--ease-out) 0.7s;
+}
+.fx .about-body.is-visible .about-lead strong { background-size: 100% 0.5em; }
+
+.fx .daily-list li {
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+  transition-delay: calc(0.4s + var(--i) * 60ms);
+}
+.fx .about-body:not(.is-visible) .daily-list li { opacity: 0; transform: translateX(-10px); }
+.fx .daily-list li::before { transition: background-color 0.2s, transform 0.35s var(--ease-out); }
+.fx .daily-list li:hover::before { background: var(--accent); transform: translateY(-3px) rotate(45deg) scale(1.4); }
+
+/* ---------- Trajetória ---------- */
+.fx .milestone .node { transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); transition-delay: calc(0.35s + var(--m) * 0.32s); }
+.fx .track:not(.is-visible) .milestone .node { transform: scale(0); }
+.fx .milestone > :not(.node) {
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+  transition-delay: calc(0.45s + var(--m) * 0.32s);
+}
+.fx .track:not(.is-visible) .milestone > :not(.node) { opacity: 0; transform: translateY(12px); }
+
+.fx .milestone.is-current .node::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border: 1px solid var(--accent);
+  animation: fxPing 2.6s var(--ease-out) 2s infinite;
+  opacity: 0;
+}
+.fx .track.is-visible .diff li {
+  animation: fxDiff 0.8s var(--ease-out) both;
+  animation-delay: calc(0.75s + var(--m) * 0.32s + var(--j) * 90ms);
+}
+@keyframes fxDiff {
+  from { opacity: 0; transform: translateX(-10px); background-color: color-mix(in srgb, var(--add) 22%, transparent); }
+}
+.fx .domains span { transition: border-color 0.6s, color 0.6s; }
+
+/* ---------- Projetos ---------- */
+.fx .case-index a { position: relative; isolation: isolate; }
+.fx .case-index a::before,
+.fx .channels a::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, var(--accent-soft), transparent 85%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s var(--ease-out);
+}
+.fx .case-index a:hover::before,
+.fx .channels a:hover::before { transform: scaleX(1); }
+.fx .case-index li,
+.fx .channels li {
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+  transition-delay: calc(0.15s + var(--i) * 80ms);
+}
+.fx .case-index:not(.is-visible) li,
+.fx .channels:not(.is-visible) li { opacity: 0; transform: translateY(14px); }
+.fx .channels a { position: relative; isolation: isolate; }
+
+.fx .case.is-visible .chips li {
+  animation: fxPop 0.5s var(--ease-out) both;
+  animation-delay: calc(0.3s + var(--i) * 55ms);
+}
+@keyframes fxPop {
+  from { opacity: 0; transform: scale(0.85) translateY(4px); }
+}
+
+/* pacotes de dados percorrendo os diagramas */
+.fx .fx-packet {
+  display: block;
+  position: absolute;
+  left: 22px;
+  width: 5px; height: 5px;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+.fx .flow-node > .fx-packet { top: -33px; }
+.fx .flow-edge > .fx-packet { top: 0; }
+.fx .case.is-visible .fx-packet {
+  animation: fxPacketNode calc(var(--n) * 0.75s + 0.9s) linear infinite;
+  animation-delay: calc(1s + var(--k) * 0.75s);
+}
+.fx .case.is-visible .flow-edge > .fx-packet { animation-name: fxPacketEdge; }
+.fx .case.is-visible .flow-edge-back > .fx-packet {
+  animation-name: fxPacketBack;
+  background: var(--add);
+  box-shadow: 0 0 10px var(--add);
+}
+@keyframes fxPacketNode {
+  0% { top: -33px; opacity: 0; }
+  4% { opacity: 1; }
+  30% { top: -7px; opacity: 1; }
+  36%, 100% { top: -7px; opacity: 0; }
+}
+@keyframes fxPacketEdge {
+  0% { top: 0; opacity: 0; }
+  4% { opacity: 1; }
+  30% { top: calc(100% - 6px); opacity: 1; }
+  36%, 100% { top: calc(100% - 6px); opacity: 0; }
+}
+@keyframes fxPacketBack {
+  0% { top: calc(50% - 5px); opacity: 0; }
+  4% { opacity: 1; }
+  30% { top: 0; opacity: 1; }
+  36%, 100% { top: 0; opacity: 0; }
+}
+.fx .case.is-visible .flow-node.is-core { animation: fxCoreGlow 3s ease-in-out 1.2s infinite; }
+@keyframes fxCoreGlow {
+  0%, 100% { box-shadow: 0 0 0 0 var(--accent-soft); }
+  50% { box-shadow: 0 0 0 6px var(--accent-soft); }
+}
+
+/* tarja de confidencialidade: varredura contínua */
+.fx .redacted span { position: relative; overflow: hidden; }
+.fx .redacted span::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--text) 16%, transparent), transparent);
+  transform: translateX(-100%);
+  animation: fxScan 2.8s ease-in-out infinite;
+}
+.fx .redacted span:nth-child(2)::after { animation-delay: 0.15s; }
+.fx .redacted span:nth-child(3)::after { animation-delay: 0.3s; }
+@keyframes fxScan { 60%, 100% { transform: translateX(100%); } }
+
+.fx .case.is-visible .phone { animation: fxFloat 7s ease-in-out 1s infinite; }
+@keyframes fxFloat { 50% { transform: translateY(-8px); } }
+
+/* ---------- Stack ---------- */
+.fx .layers .layer {
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out), background-color var(--t-fast);
+  transition-delay: calc(var(--i) * 90ms), calc(var(--i) * 90ms), 0s;
+}
+.fx .layers:not(.is-visible) .layer { opacity: 0; transform: translateX(-18px); }
+
+.fx .layer-core .layer-tech li {
+  background: linear-gradient(100deg, var(--text) 40%, var(--accent) 50%, var(--text) 60%) 100% 0 / 260% 100% no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.fx .layers.is-visible .layer-core .layer-tech li { animation: fxShine 2.4s var(--ease-out) 0.5s both; }
+.fx .layers.is-visible .layer-core .layer-tech li:hover { animation: fxShine 1.4s var(--ease-out); }
+@keyframes fxShine {
+  from { background-position: 100% 0; }
+  to { background-position: 0 0; }
+}
+
+.fx .layer-tech li { transition: color var(--t-fast), opacity 0.3s; }
+.fx .layers.fx-focus .layer-tech li:not(.fx-hot) { opacity: 0.28; }

@@ -8,7 +8,11 @@ Site estático em HTML, CSS e JavaScript puros: sem frameworks, sem dependência
 portfolio/
 ├── index.html
 ├── css/style.css          # tokens (tema escuro/claro), layout e componentes
+├── css/fx.css             # camada extra de animações (tudo sob a classe .fx)
+├── css/bit.css            # mascote Bit
 ├── js/script.js           # tema, menu, scrollspy, reveal, "Executar", copiar e-mail
+├── js/fx.js               # animações: malha do hero, textos, diagramas, stack
+├── js/bit.js              # mascote Bit: olhar, falas, tour, arrastar
 └── assets/
     ├── icons/
     │   ├── logo-mark.png         # monograma N<> original (alta resolução)

@@ -1,0 +1,174 @@
+/* =========================================================
+   Bit — mascote
+   Um "nó" do sistema visual que ganhou rosto: corpo no azul
+   do acento, tela no lugar da cara, a antena é o mesmo
+   marcador quadrado do status do hero.
+   ========================================================= */
+.bit-wrap {
+  position: fixed;
+  right: 16px;
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  z-index: 96;
+  width: 72px;
+  touch-action: none;
+}
+.bit-wrap[hidden] { display: none; }
+.has-bit .back-to-top { right: 100px; }
+
+.bit {
+  display: block;
+  width: 72px;
+  padding: 0;
+  cursor: grab;
+  -webkit-tap-highlight-color: transparent;
+}
+.bit:focus-visible { outline-offset: 4px; border-radius: 16px; }
+.bit-wrap.is-dragging .bit { cursor: grabbing; }
+.bit svg { display: block; width: 100%; height: auto; overflow: visible; transform-origin: 50% 10%; transition: transform 0.25s var(--ease-out); }
+.bit-wrap.is-dragging svg { transform: rotate(var(--tilt, 0deg)) scale(1.06); transition: transform 0.08s linear; }
+
+/* partes */
+.bit-shell { fill: var(--accent); }
+.bit-arm, .bit-foot { fill: color-mix(in srgb, var(--accent) 72%, #000); }
+.bit-ant { stroke: color-mix(in srgb, var(--accent) 72%, #000); stroke-width: 2; stroke-linecap: round; }
+.bit-tip { fill: var(--accent-strong); }
+.bit-screen { fill: var(--bg); }
+.bit-eye { fill: var(--accent-strong); transform-box: fill-box; transform-origin: center; transition: transform 0.12s; }
+.bit-eyes-happy path, .bit-eyes-sleep path, .bit-mouth-smile {
+  fill: none;
+  stroke: var(--accent-strong);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.bit-mouth-o { fill: var(--accent-strong); }
+.bit-code { font-family: var(--font-mono); font-size: 7.5px; font-weight: 500; fill: var(--accent-ink); opacity: 0.75; }
+.bit-zzz text { font-family: var(--font-mono); font-size: 9px; fill: var(--text-3); }
+.bit-look { transform: translate(var(--lx, 0px), var(--ly, 0px)); transition: transform 0.18s var(--ease-out); }
+.bit-arm { transform-box: fill-box; transform-origin: 50% 12%; }
+
+/* expressões */
+.bit-eyes-happy, .bit-eyes-sleep, .bit-mouth-o, .bit-zzz { display: none; }
+.bit[data-face="happy"] .bit-eyes-open { display: none; }
+.bit[data-face="happy"] .bit-eyes-happy { display: inline; }
+.bit[data-face="sleep"] .bit-eyes-open { display: none; }
+.bit[data-face="sleep"] .bit-eyes-sleep,
+.bit[data-face="sleep"] ~ .bit-zzz,
+.bit[data-face="sleep"] .bit-zzz { display: inline; }
+.bit[data-face="sleep"] .bit-tip { opacity: 0.35; }
+.bit[data-face="surprised"] .bit-eye { transform: scale(1.25, 1.2); }
+.bit[data-face="surprised"] .bit-mouth-smile { display: none; }
+.bit[data-face="surprised"] .bit-mouth-o { display: inline; }
+.bit[data-face="squint"] .bit-eye { transform: scaleY(0.4); }
+.bit.is-blink .bit-eye { transform: scaleY(0.12); }
+
+/* movimento */
+.bit-body { animation: bitBob 3.2s ease-in-out infinite; }
+@keyframes bitBob { 50% { transform: translateY(-2px); } }
+.bit-tip { animation: bitTip 2.4s steps(1) infinite; }
+@keyframes bitTip { 50% { fill: var(--accent); } }
+.bit[data-face="sleep"] .bit-body { animation-duration: 5s; }
+.bit-zzz text { animation: bitZ 2.4s ease-in-out infinite; }
+.bit-zzz text + text { animation-delay: 0.6s; }
+@keyframes bitZ {
+  0% { opacity: 0; transform: translate(0, 4px); }
+  40% { opacity: 1; }
+  100% { opacity: 0; transform: translate(4px, -6px); }
+}
+.bit.is-wave .bit-arm-r { animation: bitWave 0.9s ease-in-out; }
+@keyframes bitWave {
+  0%, 100% { transform: rotate(0); }
+  25%, 75% { transform: rotate(-150deg); }
+  50% { transform: rotate(-120deg); }
+}
+.bit.is-jump svg { animation: bitJump 0.6s var(--ease-out); }
+@keyframes bitJump {
+  0% { transform: scale(1.08, 0.9); }
+  35% { transform: translateY(-16px) scale(0.96, 1.05); }
+  70% { transform: translateY(0) scale(1.06, 0.94); }
+  100% { transform: none; }
+}
+.bit.is-spin svg { animation: bitSpin 0.8s var(--ease-out); }
+@keyframes bitSpin { to { transform: rotate(360deg); } }
+.bit.is-land svg { animation: bitLand 0.45s var(--ease-out); }
+@keyframes bitLand {
+  0% { transform: scale(1.12, 0.86); }
+  60% { transform: scale(0.97, 1.04); }
+}
+.bit.is-shake svg { animation: bitShake 0.5s; }
+@keyframes bitShake {
+  20%, 60% { transform: translateX(-3px) rotate(-4deg); }
+  40%, 80% { transform: translateX(3px) rotate(4deg); }
+}
+
+/* entrada */
+.bit-wrap.is-arriving .bit svg { animation: bitArrive 0.9s var(--ease-out) both; }
+@keyframes bitArrive {
+  0% { transform: translateY(120px); }
+  60% { transform: translateY(-10px); }
+  100% { transform: none; }
+}
+
+/* balão */
+.bit-bubble {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 10px);
+  width: max-content;
+  max-width: min(270px, calc(100vw - 32px));
+  padding: 12px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow: 0 18px 40px -22px rgba(0, 0, 0, 0.55);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--text);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px) scale(0.97);
+  transform-origin: 90% 100%;
+  transition: opacity 0.25s var(--ease-out), transform 0.3s var(--ease-out), visibility 0s linear 0.3s;
+}
+.bit-bubble::after {
+  content: '';
+  position: absolute;
+  right: 28px;
+  bottom: -6px;
+  width: 10px; height: 10px;
+  background: var(--surface);
+  border-right: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  transform: rotate(45deg);
+}
+.bit-bubble.is-open { opacity: 1; visibility: visible; transform: none; transition: opacity 0.25s var(--ease-out), transform 0.3s var(--ease-out), visibility 0s; }
+.bit-wrap.is-left .bit-bubble { right: auto; left: 0; transform-origin: 10% 100%; }
+.bit-wrap.is-left .bit-bubble::after { right: auto; left: 28px; }
+.bit-wrap.is-below .bit-bubble { bottom: auto; top: calc(100% + 10px); transform-origin: 90% 0; }
+.bit-wrap.is-below .bit-bubble::after { bottom: auto; top: -6px; transform: rotate(225deg); }
+
+.bit-name { display: block; margin-bottom: 2px; font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent); }
+.bit-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.bit-actions:empty { display: none; }
+.bit-actions button {
+  min-height: 32px;
+  padding: 0 11px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text);
+  transition: border-color var(--t-fast), background-color var(--t-fast), color var(--t-fast);
+}
+.bit-actions button:hover { border-color: var(--accent-line); background: var(--accent-soft); color: var(--accent); }
+
+/* o elemento que o Bit está comentando ganha um contorno */
+.bit-spot { outline: 1px dashed var(--accent-line); outline-offset: 6px; border-radius: 4px; transition: outline-color 0.3s; }
+
+@media (max-width: 560px) {
+  .bit-wrap, .bit { width: 58px; }
+  .has-bit .back-to-top { right: 84px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bit-body, .bit-tip, .bit-zzz text { animation: none; }
+}
