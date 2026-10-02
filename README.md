@@ -25,9 +25,6 @@ portfolio/
         └── og-image.png          # imagem de compartilhamento (1200×630)
 ```
 
-Arquivos antigos que **não são mais usados** pela página: `cofrinho-mockup.png`,
-`brysa-mockup.svg`, `rapanui-mockup.svg` e `atlas-mockup.svg`. Podem ser apagados.
-
 ## Direção visual
 
 - **Tema:** grafite azulado (não é preto puro) com um único acento azul, herdado do monograma N<>.
